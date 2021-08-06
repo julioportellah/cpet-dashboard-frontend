@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatOptionSelectionChange } from '@angular/material/core';
 
-interface Food {
+interface Sessions {
   value: string;
   viewValue: string;
 }
@@ -10,7 +11,7 @@ interface Food {
   styleUrls: ['./patient-selector.component.css']
 })
 export class PatientSelectorComponent implements OnInit {
-  foods: Food[] = [
+  sessions: Sessions[] = [
     {value: '48', viewValue: '48'},
     {value: '49', viewValue: '49'},
     {value: '50', viewValue: '50'}
@@ -20,5 +21,9 @@ export class PatientSelectorComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  SelectSession(selectedSession:any){
+    console.log(selectedSession)
+  }
 
 }
+

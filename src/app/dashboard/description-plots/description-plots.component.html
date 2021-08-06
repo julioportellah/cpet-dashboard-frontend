@@ -5,8 +5,44 @@
   </mat-tab-group> -->
   <div class="my-theme">
     <mat-tab-group [backgroundColor]="'accent'" [color]="'warn'">
-        <mat-tab label="Cardiac"> Content 1 </mat-tab>
-        <mat-tab label="Pulmonary"> Content 2 </mat-tab>
-        <mat-tab label="Muscle Skeletal"> Content 3 </mat-tab>
+        <mat-tab label="Cardiac summary plot">
+            <div class="row">
+                <div class="col-lg-5 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/cardiac-model/cardiac_summary_plot.png'>
+                </div>
+                <div class="col-lg-7 col-sm-12">
+                    <p>
+                        This is the SHAP summary plot for the cardiac limitation model
+                    </p>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Cardiac dependency plot"> Content 1 </mat-tab>
+        <mat-tab label="Pulmonary summary">
+            <div class="row">
+                <div class="col-lg-5 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/pulmonary-model/pulmonary_summary_plot.png'>
+                </div>
+                <div class="col-lg-7 col-sm-12">
+                    <p>
+                        This is the SHAP summary plot for the pulmonary limitation model
+                    </p>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Pulmonary dependency"> Content 2 </mat-tab>
+        <mat-tab label="Other origin summary">
+            <div class="row">
+                <div class="col-lg-5 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/other-model/other_summary_plot.png'>
+                </div>
+                <div class="col-lg-7 col-sm-12">
+                    <p>
+                        This is the SHAP summary plot for the other origin limitation model
+                    </p>
+                </div>
+            </div>            
+        </mat-tab>
+        <mat-tab label="Other dependency"> Content 3 </mat-tab>
     </mat-tab-group>
 </div>
