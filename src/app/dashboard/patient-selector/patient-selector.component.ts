@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { MatOptionSelectionChange } from '@angular/material/core';
 
 interface Sessions {
@@ -11,6 +11,7 @@ interface Sessions {
   styleUrls: ['./patient-selector.component.css']
 })
 export class PatientSelectorComponent implements OnInit {
+  @Output() selected = new EventEmitter<string>();
   sessions: Sessions[] = [
     {value: '48', viewValue: '48'},
     {value: '49', viewValue: '49'},
@@ -21,7 +22,8 @@ export class PatientSelectorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  SelectSession(selectedSession:any){
+  SelectSession(selectedSession:string){
+    this.selected.emit(selectedSession);
     console.log(selectedSession)
   }
 

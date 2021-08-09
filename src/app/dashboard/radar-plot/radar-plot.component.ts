@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 import {
   ApexAxisChartSeries,
@@ -34,9 +34,12 @@ export type ChartOptions = {
   templateUrl: './radar-plot.component.html',
   styleUrls: ['./radar-plot.component.css']
 })
-export class RadarPlotComponent{
+export class RadarPlotComponent {
+  @Input('cardiac-value') cardiacValue: number;
+  @Input('pulmonary-value') pulmonaryValue: number;
+  @Input('other-value') otherValue: number;
   @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions> |any;
+  public chartOptions: Partial<ChartOptions> | any;
 
   constructor() {
     this.chartOptions = {
@@ -76,7 +79,7 @@ export class RadarPlotComponent{
       },
       tooltip: {
         y: {
-          formatter: function(val:any) {
+          formatter: function (val: any) {
             return val;
           }
         }
@@ -91,7 +94,7 @@ export class RadarPlotComponent{
       yaxis: {
         tickAmount: 7,
         labels: {
-          formatter: function(val:any, i:any) {
+          formatter: function (val: any, i: any) {
             if (i % 2 === 0) {
               return val;
             } else {
@@ -101,7 +104,5 @@ export class RadarPlotComponent{
         }
       }
     };
-   }
-
-
+  }
 }
