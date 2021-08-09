@@ -3,7 +3,9 @@
         <app-patient-selector (selected)="onSelected($event)"></app-patient-selector>
     </div>
     <div class="col">
-        <app-radar-plot></app-radar-plot>    
+        <app-radar-plot [cardiac-value]='cardiacValue'
+        [pulmonary-value]='pulmonaryValue'
+        [other-value]='otherValue'></app-radar-plot>    
     </div>
 </div>
 <div class="row">
