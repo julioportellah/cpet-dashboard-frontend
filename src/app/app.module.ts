@@ -20,7 +20,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 import { RadarPlotComponent } from './dashboard/radar-plot/radar-plot.component';
 import { DescriptionPlotsComponent } from './dashboard/description-plots/description-plots.component';
 import { PatientSelectorComponent } from './dashboard/patient-selector/patient-selector.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { PatientSelectorComponent } from './dashboard/patient-selector/patient-s
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

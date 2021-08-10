@@ -12,12 +12,39 @@
                 </div>
                 <div class="col-lg-7 col-sm-12">
                     <p>
-                        This is the SHAP summary plot for the cardiac limitation model
+                        The SHAP summary plot does not represent the odds of having a condition or not but rather the influence of being in that category.
+                        Thus, if your feature has a high shapley value, the feature has a possitive relationship with the condition predicted.
+                        <br><br>
+                        The feature importance is sorted from top to bottom. For this model, we can see that the Difference betwee the actual peak VO2 and
+                        the expected peak VO2 is the most important feature for the model. This can be seen in some research projects done in the past.
+                        <br><br>
+                        The color bar on the right tell us if a dot has a high actual value, the blue ones tell that the dot had a low actual value. 
+                        Each dot represent each data sample where the experiment
+                        was run. The sum of all the dots generates the pattern. With more datapoints the better pattern. 
+                        <br><br>
+                        Finally, there is a grey line that divides the summary plot. The values on the left indicates negative shapley values while the ones in the
+                        right mean high shapley values. 
+                        Finally, a full interpretation in this case will mean that if you have red dots on the left and blue dots on the right, your feature 
+                        when it has a high value reduces the odds of having a cardiac limitation. If your feature has a low value, it actually increases the odds
+                        of having a cardiac limitation. Thus, the difference between the actual vs the expected peak VO2 has an inverse relationship with the 
+                        cardiac limitation.
                     </p>
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Cardiac dependency plot"> Content 1 </mat-tab>
+        <mat-tab label="Cardiac dependency plot">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>
+                        The dependency plot behaves more like a regular curve. Although it doesn't show a curve, it may show a pattern that is modeled by the algorithm.
+                        The Y-axis represents the shapley values, thus the influence on having a cardiac limitation or not. The higher the value the higher the chances.
+                    </p>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/cardiac-model/cardiac_dependency_plots.png'>
+                </div>
+            </div>
+        </mat-tab>
         <mat-tab label="Pulmonary summary">
             <div class="row">
                 <div class="col-lg-5 col-sm-12">
@@ -25,12 +52,28 @@
                 </div>
                 <div class="col-lg-7 col-sm-12">
                     <p>
-                        This is the SHAP summary plot for the pulmonary limitation model
+                        Compared to the cardiac model summary plot, we can see that this model only needs 10 features but it's performance is lower than the first.
+                        <br><br>
+                        The most important feature in this model is the difference between the actual peak O2 pulse and the expected peak O2 pulse. We can see that
+                        the red dots are concentrated in the left while the blue ones are in the right side. This means it has an inverse relationship with the
+                        pulmonary limitation. In summary the greater your actual O2 pulse is compared to the expected, the lower your odds of having a pulmonary limitation.
                     </p>
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Pulmonary dependency"> Content 2 </mat-tab>
+        <mat-tab label="Pulmonary dependency">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>
+                        The dependency plot behaves more like a regular curve. Although it doesn't show a curve, it may show a pattern that is modeled by the algorithm.
+                        The Y-axis represents the shapley values, thus the influence on having a pulmonary limitation or not. The higher the value the higher the chances.
+                    </p>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/pulmonary-model/pulmonary_dependency_plots.png'>
+                </div>
+            </div>
+        </mat-tab>
         <mat-tab label="Other origin summary">
             <div class="row">
                 <div class="col-lg-5 col-sm-12">
@@ -38,11 +81,28 @@
                 </div>
                 <div class="col-lg-7 col-sm-12">
                     <p>
-                        This is the SHAP summary plot for the other origin limitation model
+                        In the case of other limitations, since we are talking aboud different origins, main fatures are be quite different and compared to the 
+                        cardiac and pulmonary limitation models.
+                        <br><br>
+                        The most important feature in this model is the difference between the actual peak VO2 at the Ventilatory Threshold momentand the expected peak VO2 pulse. We can see that
+                        the red dots are concentrated in the left while the blue ones are in the right side. This means it has an inverse relationship with the
+                        other origin limitation. 
                     </p>
                 </div>
             </div>            
         </mat-tab>
-        <mat-tab label="Other dependency"> Content 3 </mat-tab>
+        <mat-tab label="Other dependency">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <p>
+                        The dependency plot behaves more like a regular curve. Although it doesn't show a curve, it may show a pattern that is modeled by the algorithm.
+                        The Y-axis represents the shapley values, thus the influence on having a other origin limitation or not. The higher the value the higher the chances.
+                    </p>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <img style="background-color: white; object-fit: cover" mat-card-image src='../../../assets/other-model/other_dependency_plots.png'>
+                </div>
+            </div>
+        </mat-tab>
     </mat-tab-group>
 </div>

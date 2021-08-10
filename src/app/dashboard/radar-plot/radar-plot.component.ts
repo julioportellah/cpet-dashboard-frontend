@@ -94,7 +94,8 @@ export class RadarPlotComponent implements OnChanges {
         ]
       },
       yaxis: {
-        tickAmount: 7,
+        max: 100,
+        tickAmount: 5,
         labels: {
           formatter: function (val: any, i: any) {
             if (i % 2 === 0) {
@@ -114,7 +115,7 @@ export class RadarPlotComponent implements OnChanges {
       series: [
         {
           name: "Series 1",
-          data: [this.cardiacValue, this.pulmonaryValue, this.otherValue]
+          data: [0,0,0]
         }
       ],
       chart: {
@@ -160,6 +161,7 @@ export class RadarPlotComponent implements OnChanges {
         ]
       },
       yaxis: {
+        max: 100,
         tickAmount: 7,
         labels: {
           formatter: function (val: any, i: any) {
