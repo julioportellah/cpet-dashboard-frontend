@@ -15,12 +15,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list'
+import { MatDialogModule } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { RadarPlotComponent } from './dashboard/radar-plot/radar-plot.component';
 import { DescriptionPlotsComponent } from './dashboard/description-plots/description-plots.component';
 import { PatientSelectorComponent } from './dashboard/patient-selector/patient-selector.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExplanationModalComponent } from './dashboard/explanation-modal/explanation-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     RadarPlotComponent,
     DescriptionPlotsComponent,
-    PatientSelectorComponent
+    PatientSelectorComponent,
+    ExplanationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [],

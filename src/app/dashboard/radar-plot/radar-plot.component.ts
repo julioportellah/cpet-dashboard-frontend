@@ -43,7 +43,6 @@ export class RadarPlotComponent implements OnChanges {
   public chartOptions: Partial<ChartOptions> | any;
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('Changed');
     this.chartOptions = {
       series: [
         {

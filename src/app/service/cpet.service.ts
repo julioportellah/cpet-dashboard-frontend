@@ -12,16 +12,12 @@ export class CpetService implements OnInit {
   // }
   constructor(private httpClient: HttpClient){
     this.httpClient.get("assets/data.json").subscribe(data =>{
-      console.log('**********************');
-      console.log(data);
       this.products = data;
     })
   }
 
   ngOnInit(){
     this.httpClient.get("assets/data.json").subscribe(data =>{
-      console.log('**********************');
-      console.log(data);
       this.products = data;
     })
   }
@@ -34,10 +30,6 @@ export class CpetService implements OnInit {
     if (session == '')
       return [0,0,0]
     this.sessionNumber = parseInt(session);
-    console.log('-----------');
-    console.log(this.products.CardiacProba[this.sessionNumber])
-    console.log(this.products.PulmonaryProba[this.sessionNumber])
-    console.log(this.products.OtherProba[this.sessionNumber])
     return [this.products.CardiacProba[this.sessionNumber],
             this.products.PulmonaryProba[this.sessionNumber],
             this.products.OtherProba[this.sessionNumber]]

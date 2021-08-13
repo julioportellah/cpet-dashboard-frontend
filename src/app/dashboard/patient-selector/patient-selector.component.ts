@@ -22,7 +22,6 @@ export class PatientSelectorComponent implements OnInit {
   
   SelectSession(selectedSession:string){
     this.selected.emit(selectedSession);
-    console.log(selectedSession)
   }
 
   //Note: this is an antipattern but a good MVP solution  
