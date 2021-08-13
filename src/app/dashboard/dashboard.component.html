@@ -1,13 +1,22 @@
 <div class="row">
-    <div class="col">
+    <div class="col-lg-6 col-sm-12">
         <app-patient-selector (selected)="onSelected($event)"></app-patient-selector>
     </div>
-    <div class="col">
-        <app-radar-plot [cardiac-value]='cardiacValue'
-        [pulmonary-value]='pulmonaryValue'
-        [other-value]='otherValue'></app-radar-plot>    
+    <div class="col-lg-6 col-sm-12">
+        <div class="row">
+            <app-radar-plot [cardiac-value]='cardiacValue'
+            [pulmonary-value]='pulmonaryValue'
+            [other-value]='otherValue'></app-radar-plot>
+        </div>
+        <section>
+            <div class="button-row">
+                <button mat-raised-button color="primary">See Cardiac</button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="primary">See Pulmonary</button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="primary">See Other</button>
+            </div>
+        </section>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <app-description-plots></app-description-plots>
-</div>
+</div> -->
