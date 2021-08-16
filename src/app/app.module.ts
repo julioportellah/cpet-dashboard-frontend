@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExplanationModalComponent } from './dashboard/explanation-modal/explanation-modal.component';
 import { DynamicPlotComponent } from './dynamic-plot/dynamic-plot.component';
 import { ScoresPlotComponent } from './dynamic-plot/scores-plot/scores-plot.component';
+import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-timeline.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ScoresPlotComponent } from './dynamic-plot/scores-plot/scores-plot.comp
     PatientSelectorComponent,
     ExplanationModalComponent,
     DynamicPlotComponent,
-    ScoresPlotComponent
+    ScoresPlotComponent,
+    ScoreTimelineComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,12 @@
     <div class="col-lg-2 col-md-2 col-sm-12">
         <app-patient-selector (selected)="onSelected($event)"></app-patient-selector>
     </div>
-    <div class="col-lg-10 col-md-10 col-sm-12">
+    <div class="col-lg-5 col-md-5 col-sm-12">
+        <ng-container *ngIf="showDynamicPlots">
+            <app-score-timeline></app-score-timeline>
+          </ng-container>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12">
         <app-scores-plot></app-scores-plot>
     </div>
 </div>

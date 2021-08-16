@@ -53,7 +53,7 @@ export class CpetService implements OnInit {
       "RealPulmonaryLim": this.dynamicData.PulmonaryLim[this.sessionNumber]*100,
       "RealOtherLim": this.dynamicData.OtherLim[this.sessionNumber]*100,
       "Time": [40, 50, 60, 80, 90, 100],
-      "CardiacProba": [
+      "CardiacScores": [
         Math.round(this.dynamicData.CardiacLimProba40[this.sessionNumber]*100),
         Math.round(this.dynamicData.CardiacLimProba50[this.sessionNumber]*100),
         Math.round(this.dynamicData.CardiacLimProba60[this.sessionNumber]*100),
@@ -62,7 +62,7 @@ export class CpetService implements OnInit {
         Math.round(this.dynamicData.CardiacLimProba90[this.sessionNumber]*100),
         Math.round(this.dynamicData.CardiacLimProba100[this.sessionNumber]*100)
       ],
-      "PulmonaryProba": [
+      "PulmonaryScores": [
         Math.round(this.dynamicData.PulmonaryLimProba40[this.sessionNumber]*100),
         Math.round(this.dynamicData.PulmonaryLimProba50[this.sessionNumber]*100),
         Math.round(this.dynamicData.PulmonaryLimProba60[this.sessionNumber]*100),
@@ -71,7 +71,7 @@ export class CpetService implements OnInit {
         Math.round(this.dynamicData.PulmonaryLimProba90[this.sessionNumber]*100),
         Math.round(this.dynamicData.PulmonaryLimProba100[this.sessionNumber]*100)
       ],
-      "OtherProba": [
+      "OtherScores": [
         Math.round(this.dynamicData.OtherLimProba40[this.sessionNumber]*100),
         Math.round(this.dynamicData.OtherLimProba50[this.sessionNumber]*100),
         Math.round(this.dynamicData.OtherLimProba60[this.sessionNumber]*100),

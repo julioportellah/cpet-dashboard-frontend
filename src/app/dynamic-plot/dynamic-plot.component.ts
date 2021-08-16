@@ -10,6 +10,9 @@ export class DynamicPlotComponent implements OnInit {
   constructor(private cpetService: CpetService) { }
   showDynamicPlots=false;
   timeData:any;
+  cardiacScores:any;
+  pulmonaryScores:any;
+  otherScores:any;
   ngOnInit(): void {
   }
 
@@ -19,7 +22,11 @@ export class DynamicPlotComponent implements OnInit {
     this.showDynamicPlots =  results != null;
     if (this.showDynamicPlots)
     {
-      this.timeData=results.Time
+      this.timeData=results.Time;
+      this.cardiacScores = results.CardiacScores;
+      this.pulmonaryScores = results.PulmonaryScores;
+      this.otherScores = results.OtherScores;
+      console.log(this.otherScores);
       console.log(this.timeData);
     }
       
