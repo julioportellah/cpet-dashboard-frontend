@@ -4,7 +4,9 @@
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
         <ng-container *ngIf="showDynamicPlots">
-            <app-score-timeline></app-score-timeline>
+            <app-score-timeline [cardiac-scores]='cardiacScores'
+            [pulmonary-scores]='pulmonaryScores'
+            [other-scores]='otherScores'></app-score-timeline>
           </ng-container>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
