@@ -15,6 +15,7 @@ export class AppComponent {
   menu: MenuObject = [
     { "name": "Dashboard", "link": "Dashboard" ,"active":true},
     { "name": "SHAP plots", "link": "ShapPlots", "active":false },
+    { "name": "Dynamic plot", "link": "DynamicPlot", "active":false },
     { "name": "Try it", "link": "TryIt", "active":false },
     { "name": "About", "link": "About", "active":false }
   ];

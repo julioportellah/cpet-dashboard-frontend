@@ -23,6 +23,8 @@ import { DescriptionPlotsComponent } from './dashboard/description-plots/descrip
 import { PatientSelectorComponent } from './dashboard/patient-selector/patient-selector.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExplanationModalComponent } from './dashboard/explanation-modal/explanation-modal.component';
+import { DynamicPlotComponent } from './dynamic-plot/dynamic-plot.component';
+import { ScoresPlotComponent } from './dynamic-plot/scores-plot/scores-plot.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ExplanationModalComponent } from './dashboard/explanation-modal/explana
     RadarPlotComponent,
     DescriptionPlotsComponent,
     PatientSelectorComponent,
-    ExplanationModalComponent
+    ExplanationModalComponent,
+    DynamicPlotComponent,
+    ScoresPlotComponent
   ],
   imports: [
     BrowserModule,
