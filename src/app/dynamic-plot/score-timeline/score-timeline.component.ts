@@ -76,7 +76,7 @@ export class ScoreTimelineComponent implements OnChanges {
         curve: "smooth"
       },
       title: {
-        text: "Models' AUC scores over the percent of the session",
+        text: "Models' scores over the percent of the session",
         align: "left"
       },
       grid: {
@@ -97,7 +97,7 @@ export class ScoreTimelineComponent implements OnChanges {
       },
       yaxis: {
         title: {
-          text: "AUC scores"
+          text: "Odds of having a limitation"
         },
         min: 0,
         max: 100

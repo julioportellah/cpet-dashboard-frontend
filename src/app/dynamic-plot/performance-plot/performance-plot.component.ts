@@ -81,7 +81,7 @@ export class PerformancePlotComponent{
         curve: "smooth"
       },
       title: {
-        text: "Models' scores over the percent of the session",
+        text: "Models' AUC scores over the percent of the session",
         align: "left"
       },
       grid: {
@@ -102,7 +102,7 @@ export class PerformancePlotComponent{
       },
       yaxis: {
         title: {
-          text: "Odds of a Limitation"
+          text: "AUC score"
         },
         min: 0,
         max: 100
