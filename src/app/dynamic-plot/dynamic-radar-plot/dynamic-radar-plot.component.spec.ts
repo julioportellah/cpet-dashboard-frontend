@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScoresPlotComponent } from './scores-plot.component';
+import { DynamicRadarPlotComponent } from './dynamic-radar-plot.component';
 
-describe('ScoresPlotComponent', () => {
-  let component: ScoresPlotComponent;
-  let fixture: ComponentFixture<ScoresPlotComponent>;
+describe('DynamicRadarPlotComponent', () => {
+  let component: DynamicRadarPlotComponent;
+  let fixture: ComponentFixture<DynamicRadarPlotComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScoresPlotComponent ]
+      declarations: [ DynamicRadarPlotComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScoresPlotComponent);
+    fixture = TestBed.createComponent(DynamicRadarPlotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

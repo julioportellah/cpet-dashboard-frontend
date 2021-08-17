@@ -4,12 +4,34 @@
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
         <ng-container *ngIf="showDynamicPlots">
-            <app-score-timeline [cardiac-scores]='cardiacScores'
-            [pulmonary-scores]='pulmonaryScores'
-            [other-scores]='otherScores'></app-score-timeline>
-          </ng-container>
+            <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
+                [other-scores]='otherScores'></app-score-timeline>
+        </ng-container>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
-        <app-scores-plot></app-scores-plot>
+        <ng-container *ngIf="showDynamicPlots">
+            <div class="row">
+                <app-dynamic-radar-plot></app-dynamic-radar-plot>
+            </div>
+            <div class="row">
+                <div class="col-lg-1 col-sm-1">
+                    <ng-container *ngIf="!isPlaying">
+                        <button mat-icon-button color="primary" (click)="playDynamicRadar()" aria-label="Example icon button with a home icon">
+                            <mat-icon>play_circle_filled</mat-icon>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngIf="isPlaying">
+                        <button mat-icon-button color="primary" (click)="pauseDynamicRadar()" aria-label="Example icon button with a home icon">
+                            <mat-icon>pause_circle_filled</mat-icon>
+                        </button>
+                    </ng-container>
+                </div>
+                <div class="col-lg-11 col-sm-11">
+                    <div style="height:auto; width:auto">
+                    </div>
+                    <mat-progress-bar value=40></mat-progress-bar>                    
+                </div>
+            </div>
+        </ng-container>
     </div>
 </div>

@@ -14,8 +14,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { RadarPlotComponent } from './dashboard/radar-plot/radar-plot.component';
@@ -24,8 +26,8 @@ import { PatientSelectorComponent } from './dashboard/patient-selector/patient-s
 import { HttpClientModule } from '@angular/common/http';
 import { ExplanationModalComponent } from './dashboard/explanation-modal/explanation-modal.component';
 import { DynamicPlotComponent } from './dynamic-plot/dynamic-plot.component';
-import { ScoresPlotComponent } from './dynamic-plot/scores-plot/scores-plot.component';
 import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-timeline.component';
+import { DynamicRadarPlotComponent } from './dynamic-plot/dynamic-radar-plot/dynamic-radar-plot.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,8 @@ import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-time
     PatientSelectorComponent,
     ExplanationModalComponent,
     DynamicPlotComponent,
-    ScoresPlotComponent,
-    ScoreTimelineComponent
+    ScoreTimelineComponent,
+    DynamicRadarPlotComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,8 @@ import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-time
     MatNativeDateModule,
     MatGridListModule,
     MatDialogModule,
+    MatIconModule,
+    MatProgressBarModule,
     HttpClientModule
   ],
   providers: [],

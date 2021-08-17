@@ -9,12 +9,35 @@ import { CpetService } from '../service/cpet.service';
 export class DynamicPlotComponent implements OnInit {
   constructor(private cpetService: CpetService) { }
   showDynamicPlots=false;
+  isPlaying=false;
   timeData:any;
   cardiacScores:any;
   pulmonaryScores:any;
   otherScores:any;
+  valuesIndex:number=0;
   ngOnInit(): void {
+    this.updateIndex();
   }
+
+  updateIndex(): void {
+    setInterval(() => {         //replaced function() by ()=>
+      if (this.isPlaying){
+        this.valuesIndex++;
+        if (this.valuesIndex >=7)
+          this.valuesIndex = 0;
+      }
+      console.log(this.valuesIndex); // just testing if it is working
+    }, 1000);
+}
+
+  playDynamicRadar() {
+    this.isPlaying = true;
+  }
+
+  pauseDynamicRadar() {
+    this.isPlaying = false;
+  }
+
 
   onSelected(selected:string){
     console.log(selected)
