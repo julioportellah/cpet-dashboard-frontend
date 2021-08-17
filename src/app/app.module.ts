@@ -28,6 +28,7 @@ import { ExplanationModalComponent } from './dashboard/explanation-modal/explana
 import { DynamicPlotComponent } from './dynamic-plot/dynamic-plot.component';
 import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-timeline.component';
 import { DynamicRadarPlotComponent } from './dynamic-plot/dynamic-radar-plot/dynamic-radar-plot.component';
+import { PerformancePlotComponent } from './dynamic-plot/performance-plot/performance-plot.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DynamicRadarPlotComponent } from './dynamic-plot/dynamic-radar-plot/dyn
     ExplanationModalComponent,
     DynamicPlotComponent,
     ScoreTimelineComponent,
-    DynamicRadarPlotComponent
+    DynamicRadarPlotComponent,
+    PerformancePlotComponent
   ],
   imports: [
     BrowserModule,

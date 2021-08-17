@@ -109,7 +109,6 @@ export class RadarPlotComponent implements OnChanges {
   }
 
   constructor() {
-    console.log(this.dataResult);
     this.chartOptions = {
       series: [
         {
