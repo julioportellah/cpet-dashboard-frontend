@@ -11,7 +11,9 @@
     <div class="col-lg-5 col-md-5 col-sm-12">
         <ng-container *ngIf="showDynamicPlots">
             <div class="row">
-                <app-dynamic-radar-plot></app-dynamic-radar-plot>
+                <app-dynamic-radar-plot [cardiac-value]='radarCardiacValue' [pulmonary-value]='radarPulmonaryValue'
+                    [other-value]='radarOtherValue' [reference-cardiac-value]='radarReferencesCardiac'
+                    [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'></app-dynamic-radar-plot>
             </div>
             <div class="row">
                 <div class="col-lg-1 col-sm-1">
@@ -27,9 +29,10 @@
                     </ng-container>
                 </div>
                 <div class="col-lg-11 col-sm-11">
-                    <div style="height:auto; width:auto">
-                    </div>
-                    <mat-progress-bar value=40></mat-progress-bar>                    
+                    <section class="example-section">
+                        determinate progress bar
+                        <mat-progress-bar mode="determinate" value="{{timeValue}}" color="accent"></mat-progress-bar>  
+                    </section>            
                 </div>
             </div>
         </ng-container>

@@ -15,6 +15,14 @@ export class DynamicPlotComponent implements OnInit {
   pulmonaryScores:any;
   otherScores:any;
   valuesIndex:number=0;
+  radarCardiacValue:number=0;
+  radarPulmonaryValue:number=0;
+  radarOtherValue:number=0;
+  radarReferencesCardiac:number=0;
+  radarReferencesPulmonary:number=0;
+  radarReferencesOther:number=0;
+  timeValue:number=0;
+  timeValueStr:string="40";
   ngOnInit(): void {
     this.updateIndex();
   }
@@ -25,8 +33,13 @@ export class DynamicPlotComponent implements OnInit {
         this.valuesIndex++;
         if (this.valuesIndex >=7)
           this.valuesIndex = 0;
+        this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
+        this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
+        this.radarOtherValue = this.otherScores[this.valuesIndex]
+        this.timeValue = this.timeData[this.valuesIndex];
+        console.log(this.timeValue)
       }
-      console.log(this.valuesIndex); // just testing if it is working
+      //console.log(this.valuesIndex); // just testing if it is working
     }, 1000);
 }
 
@@ -49,8 +62,14 @@ export class DynamicPlotComponent implements OnInit {
       this.cardiacScores = results.CardiacScores;
       this.pulmonaryScores = results.PulmonaryScores;
       this.otherScores = results.OtherScores;
-      console.log(this.otherScores);
-      console.log(this.timeData);
+      this.radarReferencesCardiac = results.RealCardiacLim;
+      this.radarReferencesPulmonary = results.RealPulmonaryLim;
+      this.radarReferencesOther = results.RealOtherLim;
+      this.valuesIndex=0;
+      this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
+      this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
+      this.radarOtherValue = this.otherScores[this.valuesIndex]
+      this.timeValue = this.timeData[this.valuesIndex]
     }
       
     // this.sessionSelected = selected;
