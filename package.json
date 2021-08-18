@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.2.10",
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
+    "angular-google-charts": "^2.2.2",
     "apexcharts": "^3.27.3",
     "csv-parser": "^3.0.0",
     "ng-apexcharts": "^1.5.12",

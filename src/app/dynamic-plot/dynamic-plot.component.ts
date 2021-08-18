@@ -62,6 +62,22 @@ export class DynamicPlotComponent implements OnInit {
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
       this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+      console.log([this.cardiacScores, this.pulmonaryScores, this.otherScores])
+      let data= [
+        ["Jan",  500, 600],
+        ["Feb",  800, 900],
+        ["Mar",  400, 600],
+        ["Apr",  600, 500],
+        ["May",  400, 300],
+        ["Jun",  750, 700],
+        ["Jul",  800, 710],
+        ["Aug",  810, 720],
+        ["Sep",  820, 730],
+        ["Oct",  900, 840],
+        ["Nov",  910, 850],
+        ["Dec",  920, 890]
+     ];
+     console.log(data);
     }
   }
 
@@ -77,6 +93,7 @@ export class DynamicPlotComponent implements OnInit {
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
       this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+      console.log([this.cardiacScores, this.pulmonaryScores, this.otherScores])
     }
   }
 

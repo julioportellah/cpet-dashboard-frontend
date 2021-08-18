@@ -48,11 +48,11 @@ export class DynamicRadarPlotComponent implements OnChanges {
       series: [
         {
           name: "Actual Score",
-          data: [this.referenceCardiacValue, this.referencePulmonaryValue, this.referenceOtherValue]
+          data: [0, 0, 0]
         },
         {
           name: "Models' Score",
-          data: [this.cardiacValue, this.pulmonaryValue, this.otherValue]
+          data: [0, 0, 0]
         }
       ],
       chart: {
