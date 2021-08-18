@@ -40,9 +40,6 @@ export class PerformancePlotComponent{
   public chartOptions: Partial<ChartOptions>| any;
 
   constructor(private cpetService: CpetService) { 
-
-
-
     this.chartOptions = {
       series: [
         {

@@ -15,9 +15,12 @@ export class DynamicPlotComponent implements OnInit {
   cardiacPerformance:any=[0,0,0,0,0,0,0];
   pulmonaryPerformance:any=[0,0,0,0,0,0,0];
   otherPerformance:any=[0,0,0,0,0,0,0];
-  cardiacScores: any;
-  pulmonaryScores: any;
-  otherScores: any;
+  cardiacScoresFull: any;
+  pulmonaryScoresFull: any;
+  otherScoresFull: any;
+  cardiacScores: any=[];
+  pulmonaryScores: any=[];
+  otherScores: any=[];
   valuesIndex: number = 0;
   radarCardiacValue: number = 0;
   radarPulmonaryValue: number = 0;
@@ -41,16 +44,45 @@ export class DynamicPlotComponent implements OnInit {
   updateIndex(): void {
     setInterval(() => {
       if (this.isPlaying) {
-        if (this.valuesIndex <= 5)
-          this.valuesIndex++;
-          //this.valuesIndex = 0;
-        this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
-        this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
-        this.radarOtherValue = this.otherScores[this.valuesIndex]
-        this.timeValue = this.timeData[this.valuesIndex];
-        this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+        this.updateValueIndex();
       }
     }, 1500);
+  }
+
+  private updateValueIndex()
+  {
+    if (this.valuesIndex <= 5)
+    {
+      this.valuesIndex++;
+      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
+      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
+      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
+      this.timeValue = this.timeData[this.valuesIndex];
+      this.cardiacScores=this.cardiacScoresFull.slice(0, this.valuesIndex+1);
+      this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
+      this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
+      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+    }
+  }
+
+  showPrevious() {
+    if (this.valuesIndex > 0)
+    {
+      this.valuesIndex--;
+      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
+      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
+      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
+      this.timeValue = this.timeData[this.valuesIndex];
+      this.cardiacScores=this.cardiacScoresFull.slice(0, this.valuesIndex+1);
+      this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
+      this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
+      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+    }
+  }
+
+  showNext(){
+    console.log("test")
+    this.updateValueIndex();
   }
 
   playDynamicRadar() {
@@ -71,13 +103,19 @@ export class DynamicPlotComponent implements OnInit {
     this.showDynamicPlots = results != null;
     if (this.showDynamicPlots) {
       this.timeData = results.Time;
-      this.cardiacScores = results.CardiacScores;
-      this.pulmonaryScores = results.PulmonaryScores;
-      this.otherScores = results.OtherScores;
+      // this.cardiacScores = results.CardiacScores;
+      // this.pulmonaryScores = results.PulmonaryScores;
+      // this.otherScores = results.OtherScores;
+      this.cardiacScoresFull = results.CardiacScores;
+      this.pulmonaryScoresFull = results.PulmonaryScores;
+      this.otherScoresFull = results.OtherScores;
       this.radarReferencesCardiac = results.RealCardiacLim;
       this.radarReferencesPulmonary = results.RealPulmonaryLim;
       this.radarReferencesOther = results.RealOtherLim;
       this.valuesIndex = 0;
+      this.isPlaying = false;
+      this.timeValue = this.timeData[this.valuesIndex];
+      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
       this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
       this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
       this.radarOtherValue = this.otherScores[this.valuesIndex]
