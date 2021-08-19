@@ -100,6 +100,7 @@ export class DynamicPlotComponent implements OnInit {
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
       this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
       console.log([this.cardiacScores, this.pulmonaryScores, this.otherScores])
     }
   }
