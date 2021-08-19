@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { ChartType, Row } from "angular-google-charts"
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -35,7 +36,9 @@ export class ScoreTimelineComponent implements OnChanges {
   @Input('pulmonary-scores') pulmonaryScores: any=[0,0,0,0,0,0,0];
   @Input('other-scores') otherScores: any=[0,0,0,0,0,0,0];
   @ViewChild("chart") chart: ChartComponent;
+  @ViewChild("chart") chartLine:  google.visualization.LineChart;
   public chartOptions: Partial<ChartOptions>| any;
+  
 
   ngOnChanges(changes: SimpleChanges): void {
     this.chartOptions = {

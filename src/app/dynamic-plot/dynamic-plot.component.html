@@ -4,8 +4,9 @@
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
         <ng-container *ngIf="showDynamicPlots">
-            <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
-                [other-scores]='otherScores'></app-score-timeline>
+            <!-- <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
+                [other-scores]='otherScores'></app-score-timeline> -->
+                <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
         </ng-container>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">

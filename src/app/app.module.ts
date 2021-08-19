@@ -30,6 +30,7 @@ import { ScoreTimelineComponent } from './dynamic-plot/score-timeline/score-time
 import { DynamicRadarPlotComponent } from './dynamic-plot/dynamic-radar-plot/dynamic-radar-plot.component';
 import { PerformancePlotComponent } from './dynamic-plot/performance-plot/performance-plot.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/google-chart-test.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     DynamicPlotComponent,
     ScoreTimelineComponent,
     DynamicRadarPlotComponent,
-    PerformancePlotComponent
+    PerformancePlotComponent,
+    GoogleChartTestComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MatIconModule,
     MatProgressBarModule,
     HttpClientModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    GoogleChartsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

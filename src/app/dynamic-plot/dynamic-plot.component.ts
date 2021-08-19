@@ -48,6 +48,7 @@ export class DynamicPlotComponent implements OnInit {
       }
     }, 1500);
   }
+  
 
   private updateValueIndex()
   {
@@ -58,11 +59,17 @@ export class DynamicPlotComponent implements OnInit {
       this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
       this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
       this.timeValue = this.timeData[this.valuesIndex];
+      let timeScores = this.timeData.slice(0, this.valuesIndex + 1);
+      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
       this.cardiacScores=this.cardiacScoresFull.slice(0, this.valuesIndex+1);
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
-      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
-      console.log([this.cardiacScores, this.pulmonaryScores, this.otherScores])
+      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session";
+      
+      // for (let i = 0; i < this.valuesIndex+1; i++) {
+      //   result.append
+      // }
+      console.log(this.chartValue.slice(0, this.valuesIndex+1))
       let data= [
         ["Jan",  500, 600],
         ["Feb",  800, 900],
@@ -115,6 +122,8 @@ export class DynamicPlotComponent implements OnInit {
     this.valuesIndex = -1;
   }
 
+  chartValue = [[40,0,0,0]]
+  temporalChartValue = [[40,0,0,0]]
   onSelected(selected: string) {
     var results = this.cpetService.getAllTimesSessionScores(selected);
     this.showDynamicPlots = results != null;
@@ -137,6 +146,18 @@ export class DynamicPlotComponent implements OnInit {
       this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
       this.radarOtherValue = this.otherScores[this.valuesIndex]
       this.timeValue = this.timeData[this.valuesIndex]
+      console.log('***************')
+      console.log(this.cardiacScoresFull)
+      this.chartValue = [
+        [this.timeData[0], this.cardiacScoresFull[0], this.pulmonaryScoresFull[0], this.otherScoresFull[0]],
+        [this.timeData[1], this.cardiacScoresFull[1], this.pulmonaryScoresFull[1], this.otherScoresFull[1]],
+        [this.timeData[2], this.cardiacScoresFull[2], this.pulmonaryScoresFull[2], this.otherScoresFull[2]],
+        [this.timeData[3], this.cardiacScoresFull[3], this.pulmonaryScoresFull[3], this.otherScoresFull[3]],
+        [this.timeData[4], this.cardiacScoresFull[4], this.pulmonaryScoresFull[4], this.otherScoresFull[4]],
+        [this.timeData[5], this.cardiacScoresFull[5], this.pulmonaryScoresFull[5], this.otherScoresFull[5]],
+        [this.timeData[6], this.cardiacScoresFull[6], this.pulmonaryScoresFull[6], this.otherScoresFull[6]],
+      ]
+      console.log(this.chartValue)
     }
   }
 }
