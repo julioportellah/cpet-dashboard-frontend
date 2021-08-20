@@ -139,36 +139,36 @@ export class CpetService implements OnInit {
           let objectResult: Session={
             PatientId:resp.PatientId[this.sessionNumber],
             SessionId:resp.SessionId[this.sessionNumber],
-            RealCardiacLim:resp.CardiacLim[this.sessionNumber],
-            RealPulmonaryLim:resp.PulmonaryLim[this.sessionNumber],
-            RealOtherLim:resp.OtherLim[this.sessionNumber],
+            RealCardiacLim:resp.CardiacLim[this.sessionNumber]*100,
+            RealPulmonaryLim:resp.PulmonaryLim[this.sessionNumber]*100,
+            RealOtherLim:resp.OtherLim[this.sessionNumber]*100,
             Time:[40, 50, 60, 70, 80, 90, 100],
             CardiacScores:[
-              Math.round(resp.CardiacLimProba40[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba50[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba60[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba70[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba80[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba90[this.sessionNumber]),
-              Math.round(resp.CardiacLimProba100[this.sessionNumber])
+              Math.round(resp.CardiacLimProba40[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba50[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba60[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba70[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba80[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba90[this.sessionNumber]*100),
+              Math.round(resp.CardiacLimProba100[this.sessionNumber]*100)
             ],
             PulmonaryScores:[
-              Math.round(resp.PulmonaryLimProba40[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba50[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba60[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba70[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba80[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba90[this.sessionNumber]),
-              Math.round(resp.PulmonaryLimProba100[this.sessionNumber])
+              Math.round(resp.PulmonaryLimProba40[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba50[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba60[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba70[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba80[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba90[this.sessionNumber]*100),
+              Math.round(resp.PulmonaryLimProba100[this.sessionNumber]*100)
             ],
             OtherScores:[
-              Math.round(resp.OtherLimProba40[this.sessionNumber]),
-              Math.round(resp.OtherLimProba50[this.sessionNumber]),
-              Math.round(resp.OtherLimProba60[this.sessionNumber]),
-              Math.round(resp.OtherLimProba70[this.sessionNumber]),
-              Math.round(resp.OtherLimProba80[this.sessionNumber]),
-              Math.round(resp.OtherLimProba90[this.sessionNumber]),
-              Math.round(resp.OtherLimProba100[this.sessionNumber])
+              Math.round(resp.OtherLimProba40[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba50[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba60[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba70[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba80[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba90[this.sessionNumber]*100),
+              Math.round(resp.OtherLimProba100[this.sessionNumber]*100)
             ],
           };
           resolve(objectResult);
