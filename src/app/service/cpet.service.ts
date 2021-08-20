@@ -1,5 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { Session } from '../models/session.model';
+import { SessionRaw } from '../models/session-raw.model';
 
 @Injectable({
   providedIn: 'root'
@@ -73,13 +75,113 @@ export class CpetService implements OnInit {
     return this.products.SessionId;
   }
 
+  getSessionRaw(): Promise<SessionRaw[]> {
+    return new Promise<SessionRaw[]>((resolve, reject) => {
+      this.httpClient.get("assets/data/data_dynamic.json")
+        .subscribe((resp: any) => {
+          resolve(resp);
+
+        }, error => {
+          let respError = error;
+          if (error.status === 500) {
+            respError = ["Error"];
+          }
+          reject(respError);
+        }
+        );
+    })
+  }
+
+  getSessionScoresById(session: string): Promise<[number, number, number]> {
+    return new Promise<[number, number, number]>((resolve, reject) => {
+      this.httpClient.get("assets/data/data_dynamic.json")
+        .subscribe((resp: any) => {
+          if (session == '')
+            resolve([0, 0, 0]);
+          this.sessionNumber = parseInt(session);
+          resolve([
+            Math.round(resp.CardiacLimProba100[this.sessionNumber] * 100),
+            Math.round(resp.PulmonaryLimProba100[this.sessionNumber] * 100),
+            Math.round(resp.OtherLimProba100[this.sessionNumber] * 100)
+          ]);
+          resolve(resp);
+        }, error => {
+          let respError = error;
+          if (error.status === 500) {
+            respError = ["Error"];
+          }
+          reject(respError);
+        }
+        );
+    })
+  }
+
   getSessionScores(session:string):[number,number,number]{
     if (session == '')
       return [0,0,0]
+    let resultTest=this.getSessionScoresById(session);
+    let result=this.getSessionRaw();
+    result.then(function(result){
+    });
     this.sessionNumber = parseInt(session);
     return [this.products.CardiacProba[this.sessionNumber],
             this.products.PulmonaryProba[this.sessionNumber],
             this.products.OtherProba[this.sessionNumber]];
+  }
+
+  getAllTimesSessionScoresById(session:string):Promise<Session | null>{
+    return new Promise<Session| null>((resolve, reject) => {
+      this.httpClient.get("assets/data/data_dynamic.json")
+        .subscribe((resp: any) => {
+          if (session == '')
+            resolve(null);
+          this.sessionNumber = parseInt(session);
+          let objectResult: Session={
+            PatientId:resp.PatientId[this.sessionNumber],
+            SessionId:resp.SessionId[this.sessionNumber],
+            RealCardiacLim:resp.CardiacLim[this.sessionNumber],
+            RealPulmonaryLim:resp.PulmonaryLim[this.sessionNumber],
+            RealOtherLim:resp.OtherLim[this.sessionNumber],
+            Time:[40, 50, 60, 70, 80, 90, 100],
+            CardiacScores:[
+              Math.round(resp.CardiacLimProba40[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba50[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba60[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba70[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba80[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba90[this.sessionNumber]),
+              Math.round(resp.CardiacLimProba100[this.sessionNumber])
+            ],
+            PulmonaryScores:[
+              Math.round(resp.PulmonaryLimProba40[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba50[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba60[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba70[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba80[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba90[this.sessionNumber]),
+              Math.round(resp.PulmonaryLimProba100[this.sessionNumber])
+            ],
+            OtherScores:[
+              Math.round(resp.OtherLimProba40[this.sessionNumber]),
+              Math.round(resp.OtherLimProba50[this.sessionNumber]),
+              Math.round(resp.OtherLimProba60[this.sessionNumber]),
+              Math.round(resp.OtherLimProba70[this.sessionNumber]),
+              Math.round(resp.OtherLimProba80[this.sessionNumber]),
+              Math.round(resp.OtherLimProba90[this.sessionNumber]),
+              Math.round(resp.OtherLimProba100[this.sessionNumber])
+            ],
+          };
+          resolve(objectResult);
+        }, error => {
+          let respError = error;
+          if (error.status === 500) {
+            respError = ["Error"];
+          }
+          reject(null);
+        }
+        );
+    });
+
   }
 
   getAllTimesSessionScores(session: string):any{

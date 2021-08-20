@@ -13,8 +13,16 @@ interface Sessions {
 })
 export class PatientSelectorComponent implements OnInit {
   @Output() selected = new EventEmitter<string>();
+  selectedValue:string;
   sessionsListed: any;
   constructor(private cpetService: CpetService) {
+    let selectedSession =sessionStorage.getItem('selectedSession');
+    if(selectedSession!=null)
+    {
+      this.SelectSession(selectedSession.toString());
+      this.selectedValue = selectedSession;
+      this.selected.emit(this.selectedValue);
+    }
    }
 
   ngOnInit(): void {
@@ -22,6 +30,7 @@ export class PatientSelectorComponent implements OnInit {
   
   SelectSession(selectedSession:string){
     this.selected.emit(selectedSession);
+    sessionStorage.setItem('selectedSession', selectedSession);
   }
 
   //Note: this is an antipattern but a good MVP solution  

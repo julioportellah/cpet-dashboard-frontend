@@ -17,7 +17,13 @@ export class DashboardComponent implements OnInit {
   cardiacValue = 0;
   pulmonaryValue = 0;
   otherValue = 0;
-  constructor(private cpetService: CpetService, public dialog: MatDialog) { }
+  constructor(private cpetService: CpetService, public dialog: MatDialog) { 
+    let selectedSession =sessionStorage.getItem('selectedSession');
+    if(selectedSession!=null)
+    {
+      this.onSelected(selectedSession.toString());
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -34,9 +40,10 @@ export class DashboardComponent implements OnInit {
 
   onSelected(selected:string){
     this.sessionSelected = selected;
-    var results = this.cpetService.getSessionScores(selected);
-    this.cardiacValue = results[0];
-    this.pulmonaryValue = results[1];
-    this.otherValue = results[2];
+    this.cpetService.getSessionScoresById(selected).then(answer =>{
+      this.cardiacValue = answer[0];
+      this.pulmonaryValue = answer[1];
+      this.otherValue = answer[2];
+    });
   }
 }

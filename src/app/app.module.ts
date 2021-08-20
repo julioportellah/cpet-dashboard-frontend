@@ -32,6 +32,7 @@ import { PerformancePlotComponent } from './dynamic-plot/performance-plot/perfor
 import { GoogleChartsModule } from 'angular-google-charts';
 import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/google-chart-test.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

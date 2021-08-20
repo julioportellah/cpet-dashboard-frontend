@@ -12,8 +12,8 @@ export class GoogleChartTestComponent implements OnInit, OnChanges {
   options = {
     width: 600,
     height: 350,
-    vAxis: {minValue:0, maxValue:100, title:"% of the CPET session"},
-    hAxis: {minValue:40, maxValue:100, title: "Odds of a limitation"},
+    vAxis: {minValue:0, maxValue:100, title:"Odds of a limitation"},
+    hAxis: {minValue:40, maxValue:100, title: "% of the CPET session"},
     animation: {
       duration: 1000,
       easing: 'in'
