@@ -10,9 +10,11 @@
         </div>
         <section>
             <div class="button-row">
-                <button mat-raised-button (click)="openDialog()" color="primary">See Cardiac</button>&nbsp;&nbsp;&nbsp;
-                <button mat-raised-button (click)="openDialog()" color="primary">See Pulmonary</button>&nbsp;&nbsp;&nbsp;
-                <button mat-raised-button (click)="openDialog()" color="primary">See Other</button>
+                <ng-container *ngIf="sessionSelected!=''">
+                    <button mat-raised-button (click)="openDialog()" color="primary">See Cardiac</button>&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button (click)="openDialog()" color="primary">See Pulmonary</button>&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button (click)="openDialog()" color="primary">See Other</button>
+                </ng-container>
             </div>
         </section>
     </div>

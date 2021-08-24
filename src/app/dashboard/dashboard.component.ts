@@ -40,10 +40,15 @@ export class DashboardComponent implements OnInit {
 
   onSelected(selected:string){
     this.sessionSelected = selected;
-    this.cpetService.getSessionScoresById(selected).then(answer =>{
+    // this.cpetService.getSessionScoresById(selected).then(answer =>{
+    //   this.cardiacValue = answer[0];
+    //   this.pulmonaryValue = answer[1];
+    //   this.otherValue = answer[2];
+    // });
+    this.cpetService.getSessionScoresByIdAsync(selected).then(answer => {
       this.cardiacValue = answer[0];
       this.pulmonaryValue = answer[1];
       this.otherValue = answer[2];
-    });
+    })
   }
 }

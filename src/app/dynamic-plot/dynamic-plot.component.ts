@@ -111,35 +111,68 @@ export class DynamicPlotComponent implements OnInit {
   temporalChartValue = [[40,0,0,0]]
   onSelected(selected: string) {
 
-    this.cpetService.getAllTimesSessionScoresById(selected).then(answer =>{
-      this.showDynamicPlots = answer != null;
-      if (this.showDynamicPlots)
-      {
-        this.timeData = answer?.Time;
-        this.cardiacScoresFull = answer?.CardiacScores;
-        this.pulmonaryScoresFull = answer?.PulmonaryScores;
-        this.otherScoresFull = answer?.OtherScores;
-        this.radarReferencesCardiac = answer?.RealCardiacLim;
-        this.radarReferencesPulmonary = answer?.RealPulmonaryLim;
-        this.radarReferencesOther = answer?.RealOtherLim;
-        this.valuesIndex = 0;
-        this.isPlaying = false;
-        this.timeValue = this.timeData[this.valuesIndex];
-        this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
-        this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
-        this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
-        this.radarOtherValue = this.otherScores[this.valuesIndex]
-        this.timeValue = this.timeData[this.valuesIndex]
-        this.chartValue = [
-          [this.timeData[0], this.cardiacScoresFull[0], this.pulmonaryScoresFull[0], this.otherScoresFull[0]],
-          [this.timeData[1], this.cardiacScoresFull[1], this.pulmonaryScoresFull[1], this.otherScoresFull[1]],
-          [this.timeData[2], this.cardiacScoresFull[2], this.pulmonaryScoresFull[2], this.otherScoresFull[2]],
-          [this.timeData[3], this.cardiacScoresFull[3], this.pulmonaryScoresFull[3], this.otherScoresFull[3]],
-          [this.timeData[4], this.cardiacScoresFull[4], this.pulmonaryScoresFull[4], this.otherScoresFull[4]],
-          [this.timeData[5], this.cardiacScoresFull[5], this.pulmonaryScoresFull[5], this.otherScoresFull[5]],
-          [this.timeData[6], this.cardiacScoresFull[6], this.pulmonaryScoresFull[6], this.otherScoresFull[6]],
-        ]
+    this.cpetService.getAllTimesSessionScoresByIdAsync(selected).then(
+      answer => {
+        this.showDynamicPlots = answer != null;
+        if (this.showDynamicPlots)
+        {
+          this.timeData = answer?.Time;
+          this.cardiacScoresFull = answer?.CardiacScores;
+          this.pulmonaryScoresFull = answer?.PulmonaryScores;
+          this.otherScoresFull = answer?.OtherScores;
+          this.radarReferencesCardiac = answer?.RealCardiacLim;
+          this.radarReferencesPulmonary = answer?.RealPulmonaryLim;
+          this.radarReferencesOther = answer?.RealOtherLim;
+          this.valuesIndex = 0;
+          this.isPlaying = false;
+          this.timeValue = this.timeData[this.valuesIndex];
+          this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+          this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
+          this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
+          this.radarOtherValue = this.otherScores[this.valuesIndex]
+          this.timeValue = this.timeData[this.valuesIndex]
+          this.chartValue = [
+            [this.timeData[0], this.cardiacScoresFull[0], this.pulmonaryScoresFull[0], this.otherScoresFull[0]],
+            [this.timeData[1], this.cardiacScoresFull[1], this.pulmonaryScoresFull[1], this.otherScoresFull[1]],
+            [this.timeData[2], this.cardiacScoresFull[2], this.pulmonaryScoresFull[2], this.otherScoresFull[2]],
+            [this.timeData[3], this.cardiacScoresFull[3], this.pulmonaryScoresFull[3], this.otherScoresFull[3]],
+            [this.timeData[4], this.cardiacScoresFull[4], this.pulmonaryScoresFull[4], this.otherScoresFull[4]],
+            [this.timeData[5], this.cardiacScoresFull[5], this.pulmonaryScoresFull[5], this.otherScoresFull[5]],
+            [this.timeData[6], this.cardiacScoresFull[6], this.pulmonaryScoresFull[6], this.otherScoresFull[6]],
+          ]
+        }
       }
-    });
+    );
+
+    // this.cpetService.getAllTimesSessionScoresById(selected).then(answer =>{
+    //   this.showDynamicPlots = answer != null;
+    //   if (this.showDynamicPlots)
+    //   {
+    //     this.timeData = answer?.Time;
+    //     this.cardiacScoresFull = answer?.CardiacScores;
+    //     this.pulmonaryScoresFull = answer?.PulmonaryScores;
+    //     this.otherScoresFull = answer?.OtherScores;
+    //     this.radarReferencesCardiac = answer?.RealCardiacLim;
+    //     this.radarReferencesPulmonary = answer?.RealPulmonaryLim;
+    //     this.radarReferencesOther = answer?.RealOtherLim;
+    //     this.valuesIndex = 0;
+    //     this.isPlaying = false;
+    //     this.timeValue = this.timeData[this.valuesIndex];
+    //     this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
+    //     this.radarCardiacValue = this.cardiacScores[this.valuesIndex]
+    //     this.radarPulmonaryValue = this.pulmonaryScores[this.valuesIndex]
+    //     this.radarOtherValue = this.otherScores[this.valuesIndex]
+    //     this.timeValue = this.timeData[this.valuesIndex]
+    //     this.chartValue = [
+    //       [this.timeData[0], this.cardiacScoresFull[0], this.pulmonaryScoresFull[0], this.otherScoresFull[0]],
+    //       [this.timeData[1], this.cardiacScoresFull[1], this.pulmonaryScoresFull[1], this.otherScoresFull[1]],
+    //       [this.timeData[2], this.cardiacScoresFull[2], this.pulmonaryScoresFull[2], this.otherScoresFull[2]],
+    //       [this.timeData[3], this.cardiacScoresFull[3], this.pulmonaryScoresFull[3], this.otherScoresFull[3]],
+    //       [this.timeData[4], this.cardiacScoresFull[4], this.pulmonaryScoresFull[4], this.otherScoresFull[4]],
+    //       [this.timeData[5], this.cardiacScoresFull[5], this.pulmonaryScoresFull[5], this.otherScoresFull[5]],
+    //       [this.timeData[6], this.cardiacScoresFull[6], this.pulmonaryScoresFull[6], this.otherScoresFull[6]],
+    //     ]
+    //   }
+    // });
   }
 }

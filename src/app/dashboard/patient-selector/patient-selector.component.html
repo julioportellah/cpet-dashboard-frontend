@@ -1,17 +1,3 @@
-<!-- <mat-toolbar color="primary">
-    <span class="fill-remaining-space">My Reactive Form with Material</span>
-</mat-toolbar> -->
-<!-- <mat-form-field appearance="standard">
-    <mat-label>Sessions</mat-label>
-    <mat-select>
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
-<mat-form-field appearance="fill">
-    <button mat-flat-button color="primary">Select</button>
-</mat-form-field> -->
 <form class="form-container">
     <mat-card>
       <mat-card-header>
@@ -20,7 +6,10 @@
       <mat-card-content>
             <mat-label>Session</mat-label>
             <mat-select placeholder='Select' [value]="selectedValue">
-                <mat-option *ngFor="let session of sessions" [value]="session.value" (click)="SelectSession(session.value)">
+                <!-- <mat-option *ngFor="let session of sessions" [value]="session.value" (click)="SelectSession(session.value)">
+                    {{session.viewValue}}
+                </mat-option> -->
+                <mat-option *ngFor="let session of sessions" [value]="session.viewValue" (click)="SelectSession(session.viewValue)">
                     {{session.viewValue}}
                 </mat-option>
             </mat-select>

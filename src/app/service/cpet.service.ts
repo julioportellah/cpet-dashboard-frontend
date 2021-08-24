@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Session } from '../models/session.model';
 import { SessionRaw } from '../models/session-raw.model';
+import { PatientFullPrediction } from '../models/patient-full-prediction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -92,6 +93,29 @@ export class CpetService implements OnInit {
     })
   }
 
+  getSessionScoresByIdAsync(session: string): Promise<[number, number, number]>{
+    return new Promise<[number, number, number]>((resolve, reject) => {
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_record_by_patient_id/`+session)
+      .subscribe((resp: any) => {
+        if (session == '')
+          resolve([0, 0, 0]);
+        resolve([
+          resp.cardiac_proba,
+          resp.pulmonary_proba,
+          resp.other_proba
+        ]);
+        // resolve(resp);
+      }, error => {
+        let respError = error;
+        if (error.status === 500) {
+          respError = ["Error"];
+        }
+        reject(respError);
+
+      })
+    });
+  }
+
   getSessionScoresById(session: string): Promise<[number, number, number]> {
     return new Promise<[number, number, number]>((resolve, reject) => {
       this.httpClient.get("assets/data/data_dynamic.json")
@@ -127,6 +151,34 @@ export class CpetService implements OnInit {
     return [this.products.CardiacProba[this.sessionNumber],
             this.products.PulmonaryProba[this.sessionNumber],
             this.products.OtherProba[this.sessionNumber]];
+  }
+
+  getAllTimesSessionScoresByIdAsync(session: string):Promise<Session |null>{
+    return new Promise<Session| null>((resolve, reject) =>{
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_dynamic_record_by_session_id/`+session)
+      .subscribe((resp:any)=> {
+        if (session == '')
+          resolve(null);
+        let objectResult: Session = {
+          PatientId: resp.patient_id,
+          SessionId: resp.session_id,
+          RealCardiacLim: resp.cardiac_lim,
+          RealPulmonaryLim: resp.pulmonary_lim,
+          RealOtherLim: resp.other_lim,
+          Time: resp.time_list,
+          CardiacScores: resp.cardiac_proba,
+          PulmonaryScores: resp.pulmonary_proba,
+          OtherScores: resp.other_proba
+        };
+        resolve(objectResult);
+      }, error => {
+        let respError = error;
+        if (error.status === 500) {
+          respError = ["Error"];
+        }
+        reject(null);
+      })
+    });
   }
 
   getAllTimesSessionScoresById(session:string):Promise<Session | null>{
