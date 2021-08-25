@@ -37,11 +37,11 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialogPulmonary():void{
-    this.openDialog('pulmonary', this.image_base64_cardiac);
+    this.openDialog('pulmonary', this.image_base64_pulmonary);
   }
 
   openDialogOther():void{
-    this.openDialog('other', this.image_base64_cardiac);
+    this.openDialog('other', this.image_base64_other);
   }
 
   openDialog(limitation_mode:string, image_string:string): void {
@@ -71,7 +71,9 @@ export class DashboardComponent implements OnInit {
 
     this.cpetService.getCardiacSummaryPlotAsync(this.sessionSelected).then(answer => {
       console.log(answer)
-      this.image_base64_cardiac = answer;
+      this.image_base64_cardiac = answer[0];
+      this.image_base64_pulmonary = answer[1];
+      this.image_base64_other = answer[2];
     })
     // this.cpetService.getPulmonarySummaryPlotAsync(this.sessionSelected).then(answer => {
     //   console.log(answer)

@@ -93,13 +93,13 @@ export class CpetService implements OnInit {
     })
   }
 
-  getCardiacSummaryPlotAsync(session:string): Promise<string>{
-    return new Promise<string>((resolve,reject)=>{
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_cardiac_interpretation_by_session_id/`+session)
+  getCardiacSummaryPlotAsync(session:string): Promise<[string, string, string]>{
+    return new Promise<[string, string, string]>((resolve,reject)=>{
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_shap_interpretation_by_session_id/`+session)
       .subscribe((resp: any)=>{
         if (session == '')
-          resolve("");
-        resolve(resp);
+          resolve(["","",""]);
+        resolve([resp.cardiac_summary, resp.pulmonary_summary, resp.other_summary ]);
       }, error => {
         let respError = error;
         if (error.status === 500) {
