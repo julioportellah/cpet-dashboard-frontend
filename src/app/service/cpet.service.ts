@@ -93,6 +93,60 @@ export class CpetService implements OnInit {
     })
   }
 
+  getCardiacSummaryPlotAsync(session:string): Promise<string>{
+    return new Promise<string>((resolve,reject)=>{
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_cardiac_interpretation_by_session_id/`+session)
+      .subscribe((resp: any)=>{
+        if (session == '')
+          resolve("");
+        resolve(resp);
+      }, error => {
+        let respError = error;
+        if (error.status === 500) {
+          respError = ["Error"];
+        }
+        reject(respError);
+
+      })
+    });
+  }
+
+  getPulmonarySummaryPlotAsync(session:string): Promise<string>{
+    return new Promise<string>((resolve,reject)=>{
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_pulmonary_interpretation_by_session_id/`+session)
+      .subscribe((resp: any)=>{
+        if (session == '')
+          resolve("");
+        resolve(resp);
+      }, error => {
+        let respError = error;
+        if (error.status === 500) {
+          respError = ["Error"];
+        }
+        reject(respError);
+
+      })
+    });
+  }
+
+  getOtherSummaryPlotAsync(session:string): Promise<string>{
+    return new Promise<string>((resolve,reject)=>{
+      this.httpClient.get(`http://127.0.0.1:5000/api/get_other_interpretation_by_session_id/`+session)
+      .subscribe((resp: any)=>{
+        if (session == '')
+          resolve("");
+        resolve(resp);
+      }, error => {
+        let respError = error;
+        if (error.status === 500) {
+          respError = ["Error"];
+        }
+        reject(respError);
+
+      })
+    });
+  }
+
   getSessionScoresByIdAsync(session: string): Promise<[number, number, number]>{
     return new Promise<[number, number, number]>((resolve, reject) => {
       this.httpClient.get(`http://127.0.0.1:5000/api/get_record_by_patient_id/`+session)
@@ -104,7 +158,6 @@ export class CpetService implements OnInit {
           resp.pulmonary_proba,
           resp.other_proba
         ]);
-        // resolve(resp);
       }, error => {
         let respError = error;
         if (error.status === 500) {

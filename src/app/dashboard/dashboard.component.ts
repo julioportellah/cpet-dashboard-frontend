@@ -5,6 +5,7 @@ import { ExplanationModalComponent } from './explanation-modal/explanation-modal
 
 export interface DialogData {
   session: string;
+  shapImage: string;
 }
 
 @Component({
@@ -17,6 +18,9 @@ export class DashboardComponent implements OnInit {
   cardiacValue = 0;
   pulmonaryValue = 0;
   otherValue = 0;
+  image_base64_cardiac:string="";
+  image_base64_pulmonary:string="";
+  image_base64_other:string="";
   constructor(private cpetService: CpetService, public dialog: MatDialog) { 
     let selectedSession =sessionStorage.getItem('selectedSession');
     if(selectedSession!=null)
@@ -28,9 +32,21 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDialog(): void {
+  openDialogCardiac():void{
+    this.openDialog('cardiac', this.image_base64_cardiac);
+  }
+
+  openDialogPulmonary():void{
+    this.openDialog('pulmonary', this.image_base64_cardiac);
+  }
+
+  openDialogOther():void{
+    this.openDialog('other', this.image_base64_cardiac);
+  }
+
+  openDialog(limitation_mode:string, image_string:string): void {
     const dialogRef = this.dialog.open(ExplanationModalComponent, {
-      data: {session: this.sessionSelected}
+      data: {session: this.sessionSelected, shapImage: image_string}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -38,8 +54,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
   onSelected(selected:string){
     this.sessionSelected = selected;
+    console.log(this.sessionSelected);
     // this.cpetService.getSessionScoresById(selected).then(answer =>{
     //   this.cardiacValue = answer[0];
     //   this.pulmonaryValue = answer[1];
@@ -50,5 +68,18 @@ export class DashboardComponent implements OnInit {
       this.pulmonaryValue = answer[1];
       this.otherValue = answer[2];
     })
+
+    this.cpetService.getCardiacSummaryPlotAsync(this.sessionSelected).then(answer => {
+      console.log(answer)
+      this.image_base64_cardiac = answer;
+    })
+    // this.cpetService.getPulmonarySummaryPlotAsync(this.sessionSelected).then(answer => {
+    //   console.log(answer)
+    //   this.image_base64_pulmonary = answer;
+    // })
+    // this.cpetService.getOtherSummaryPlotAsync(this.sessionSelected).then(answer => {
+    //   console.log(answer)
+    //   this.image_base64_other = answer;
+    // })
   }
 }
