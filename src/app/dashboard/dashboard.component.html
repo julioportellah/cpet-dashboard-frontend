@@ -9,13 +9,20 @@
             [other-value]='otherValue'></app-radar-plot>
         </div>
         <section>
-            <div class="button-row">
-                <ng-container *ngIf="sessionSelected!=''">
-                    <button mat-raised-button (click)="openDialogCardiac()" color="primary">See Cardiac</button>&nbsp;&nbsp;&nbsp;
-                    <button mat-raised-button (click)="openDialogPulmonary()" color="primary">See Pulmonary</button>&nbsp;&nbsp;&nbsp;
-                    <button mat-raised-button (click)="openDialogOther()" color="primary">See Other</button>
-                </ng-container>
-            </div>
+            <ng-container *ngIf="showInterpretation">
+                <div class="button-row">
+                    <ng-container *ngIf="sessionSelected!=''">
+                        <button mat-raised-button (click)="openDialogOther()" color="primary">See Other</button>&nbsp;&nbsp;&nbsp;
+                        <button mat-raised-button (click)="openDialogCardiac()" color="primary">See
+                            Cardiac</button>&nbsp;&nbsp;&nbsp;
+                        <button mat-raised-button (click)="openDialogPulmonary()" color="primary">See
+                            Pulmonary</button>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="showLoader">
+                <mat-spinner></mat-spinner>
+            </ng-container>
         </section>
     </div>
 </div>

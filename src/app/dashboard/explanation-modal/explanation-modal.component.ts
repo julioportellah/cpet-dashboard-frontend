@@ -8,18 +8,17 @@ import { DialogData } from '../dashboard.component';
   styleUrls: ['./explanation-modal.component.css']
 })
 export class ExplanationModalComponent implements OnInit {
-  // @Input('session') session: string ="0";
-  // @Input('pulmonary-value') pulmonaryValue: number=0;
-  imageUrl:string="../../../assets/cardiac_waterfall_sample.png";
+  imageUrl: string = "";//"../../../assets/cardiac_waterfall_sample.png";
+  forceImageUrl: string = "../../../assets/cardiac_waterfall_sample.png";
   constructor(
     public dialogRef: MatDialogRef<ExplanationModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-     }
+  }
   
   ngOnInit(): void {
     // will log the entire data object
-    console.log(this.data)
     this.imageUrl = 'data:image/jpeg;base64,' + this.data.shapImage;
+    this.forceImageUrl = 'data:image/jpeg;base64,' + this.data.forceImage;
   }
 
 }

@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { RadarPlotComponent } from './dashboard/radar-plot/radar-plot.component';
@@ -66,6 +67,7 @@ import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/googl
     MatDialogModule,
     MatIconModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     GoogleChartsModule,
     GoogleChartsModule.forRoot()

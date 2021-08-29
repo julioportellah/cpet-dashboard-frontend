@@ -12,6 +12,8 @@ export class CpetService implements OnInit {
   dynamicData: any;
   performanceData: any;
   sessionNumber:number;
+  //baseUrl:string=`https://cpet-backend.azurewebsites.net`;
+  baseUrl:string=`http://127.0.0.1:5000`;
   // constructor(private http: HttpClient) { 
   //   this.data = this.http.get("./assets/data.json");
   // }
@@ -93,49 +95,15 @@ export class CpetService implements OnInit {
     })
   }
 
-  getCardiacSummaryPlotAsync(session:string): Promise<[string, string, string]>{
-    return new Promise<[string, string, string]>((resolve,reject)=>{
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_shap_interpretation_by_session_id/`+session)
+  getCardiacSummaryPlotAsync(session:string): Promise<[string, string, string, string, string, string]>{
+    return new Promise<[string, string, string, string, string, string]>((resolve,reject)=>{
+      this.httpClient.get(this.baseUrl+`/api/get_shap_interpretation_by_session_id/`+session)
       .subscribe((resp: any)=>{
         if (session == '')
-          resolve(["","",""]);
-        resolve([resp.cardiac_summary, resp.pulmonary_summary, resp.other_summary ]);
-      }, error => {
-        let respError = error;
-        if (error.status === 500) {
-          respError = ["Error"];
-        }
-        reject(respError);
-
-      })
-    });
-  }
-
-  getPulmonarySummaryPlotAsync(session:string): Promise<string>{
-    return new Promise<string>((resolve,reject)=>{
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_pulmonary_interpretation_by_session_id/`+session)
-      .subscribe((resp: any)=>{
-        if (session == '')
-          resolve("");
-        resolve(resp);
-      }, error => {
-        let respError = error;
-        if (error.status === 500) {
-          respError = ["Error"];
-        }
-        reject(respError);
-
-      })
-    });
-  }
-
-  getOtherSummaryPlotAsync(session:string): Promise<string>{
-    return new Promise<string>((resolve,reject)=>{
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_other_interpretation_by_session_id/`+session)
-      .subscribe((resp: any)=>{
-        if (session == '')
-          resolve("");
-        resolve(resp);
+          resolve(["","","","","",""]);
+        resolve([resp.cardiac_summary, resp.cardiac_force, 
+                resp.pulmonary_summary, resp.pulmonary_force,
+                resp.other_summary, resp.other_force ]);
       }, error => {
         let respError = error;
         if (error.status === 500) {
@@ -149,7 +117,7 @@ export class CpetService implements OnInit {
 
   getSessionScoresByIdAsync(session: string): Promise<[number, number, number]>{
     return new Promise<[number, number, number]>((resolve, reject) => {
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_record_by_patient_id/`+session)
+      this.httpClient.get(this.baseUrl+`/api/get_record_by_patient_id/`+session)
       .subscribe((resp: any) => {
         if (session == '')
           resolve([0, 0, 0]);
@@ -208,7 +176,7 @@ export class CpetService implements OnInit {
 
   getAllTimesSessionScoresByIdAsync(session: string):Promise<Session |null>{
     return new Promise<Session| null>((resolve, reject) =>{
-      this.httpClient.get(`http://127.0.0.1:5000/api/get_dynamic_record_by_session_id/`+session)
+      this.httpClient.get(this.baseUrl+`/api/get_dynamic_record_by_session_id/`+session)
       .subscribe((resp:any)=> {
         if (session == '')
           resolve(null);

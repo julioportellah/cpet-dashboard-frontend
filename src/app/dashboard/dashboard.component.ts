@@ -6,6 +6,7 @@ import { ExplanationModalComponent } from './explanation-modal/explanation-modal
 export interface DialogData {
   session: string;
   shapImage: string;
+  forceImage: string;
 }
 
 @Component({
@@ -15,12 +16,17 @@ export interface DialogData {
 })
 export class DashboardComponent implements OnInit {
   sessionSelected = "";
+  showInterpretation = false;
+  showLoader = false;
   cardiacValue = 0;
   pulmonaryValue = 0;
   otherValue = 0;
   image_base64_cardiac:string="";
   image_base64_pulmonary:string="";
   image_base64_other:string="";
+  image_base64_force_cardiac:string="";
+  image_base64_force_pulmonary:string="";
+  image_base64_force_other:string="";
   constructor(private cpetService: CpetService, public dialog: MatDialog) { 
     let selectedSession =sessionStorage.getItem('selectedSession');
     if(selectedSession!=null)
@@ -30,23 +36,24 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showLoader = false;
   }
 
   openDialogCardiac():void{
-    this.openDialog('cardiac', this.image_base64_cardiac);
+    this.openDialog('cardiac', this.image_base64_cardiac, this.image_base64_force_cardiac);
   }
 
   openDialogPulmonary():void{
-    this.openDialog('pulmonary', this.image_base64_pulmonary);
+    this.openDialog('pulmonary', this.image_base64_pulmonary, this.image_base64_force_pulmonary);
   }
 
   openDialogOther():void{
-    this.openDialog('other', this.image_base64_other);
+    this.openDialog('other', this.image_base64_other, this.image_base64_force_other);
   }
 
-  openDialog(limitation_mode:string, image_string:string): void {
+  openDialog(limitation_mode:string, image_string:string, forceImageString: string): void {
     const dialogRef = this.dialog.open(ExplanationModalComponent, {
-      data: {session: this.sessionSelected, shapImage: image_string}
+      data: {session: this.sessionSelected, shapImage: image_string, forceImage: forceImageString}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -57,12 +64,9 @@ export class DashboardComponent implements OnInit {
 
   onSelected(selected:string){
     this.sessionSelected = selected;
+    this.showInterpretation = false;
+    this.showLoader = true;
     console.log(this.sessionSelected);
-    // this.cpetService.getSessionScoresById(selected).then(answer =>{
-    //   this.cardiacValue = answer[0];
-    //   this.pulmonaryValue = answer[1];
-    //   this.otherValue = answer[2];
-    // });
     this.cpetService.getSessionScoresByIdAsync(selected).then(answer => {
       this.cardiacValue = answer[0];
       this.pulmonaryValue = answer[1];
@@ -72,16 +76,13 @@ export class DashboardComponent implements OnInit {
     this.cpetService.getCardiacSummaryPlotAsync(this.sessionSelected).then(answer => {
       console.log(answer)
       this.image_base64_cardiac = answer[0];
-      this.image_base64_pulmonary = answer[1];
-      this.image_base64_other = answer[2];
+      this.image_base64_force_cardiac = answer[1];
+      this.image_base64_pulmonary = answer[2];
+      this.image_base64_force_pulmonary = answer[3];
+      this.image_base64_other = answer[4];
+      this.image_base64_force_other = answer[5];
+      this.showInterpretation = true;
+      this.showLoader = false;
     })
-    // this.cpetService.getPulmonarySummaryPlotAsync(this.sessionSelected).then(answer => {
-    //   console.log(answer)
-    //   this.image_base64_pulmonary = answer;
-    // })
-    // this.cpetService.getOtherSummaryPlotAsync(this.sessionSelected).then(answer => {
-    //   console.log(answer)
-    //   this.image_base64_other = answer;
-    // })
   }
 }
