@@ -10,10 +10,14 @@ export class UploadFormComponent implements OnInit {
   uploadDataForm: FormGroup;
   constructor(private formBuilder: FormBuilder) { }
   numberIntegerRegex = /^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/;
+  heightRegext = /\d+(\.\d{1,3})?/
+  weightRegex = /^(0|[1-9]\d*)(,\d+)?$/;
   ngOnInit(): void {
     this.uploadDataForm = this.formBuilder.group({
       age: [null, [Validators.required, Validators.pattern(this.numberIntegerRegex)]],
-      password: [null, Validators.required]
+      gender:[null, [Validators.required]],
+      height: [null, [Validators.required, Validators.pattern(this.heightRegext)]],
+      weight: [null, [Validators.required, Validators.pattern(this.weightRegex)]],
     });
   }
 
