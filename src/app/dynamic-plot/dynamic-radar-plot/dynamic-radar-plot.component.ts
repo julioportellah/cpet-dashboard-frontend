@@ -134,7 +134,7 @@ export class DynamicRadarPlotComponent implements OnChanges {
     let sumResult = 0;
     sumResult = this.referenceCardiacValue + 2 * this.referencePulmonaryValue + 3 * this.referenceOtherValue;
 
-    this.actualResult == "Healthy"
+    this.actualResult = "Actual limitation: None"
     if(sumResult == 100)
       this.actualResult = "Actual limitation: Cardiac";
     else if(sumResult== 200)
@@ -142,7 +142,7 @@ export class DynamicRadarPlotComponent implements OnChanges {
     else if(sumResult == 300)
       this.actualResult = "Actual limitation: Other origin";
     else
-      this.actualResult = "Healthy";
+      this.actualResult = "Actual limitation: None";
       
     // this.chartOptions.series={
     //   name: "Actual Score",
