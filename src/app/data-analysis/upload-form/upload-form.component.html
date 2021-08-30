@@ -50,8 +50,17 @@
                         </mat-form-field>
                     </div>
                     <div flex>
+                        <label for="singleFile"></label>
+                        <input id="singleFile" type="file" formControlName="cpetFile" (change)="uploadFileEvt($event)" accept=".csv" />
+                    </div>
+                    <div flex>
+                        <!-- <button mat-raised-button color="primary" type="submit">Analyze</button>
+                        <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
+                            <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                        </mat-file-upload-queue> -->
+                    </div>
+                    <div flex>
                         <button mat-raised-button color="primary" type="submit">Analyze</button>
-
                     </div>
                 </div>
             </form>

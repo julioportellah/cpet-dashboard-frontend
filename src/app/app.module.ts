@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { RadarPlotComponent } from './dashboard/radar-plot/radar-plot.component';
@@ -35,7 +36,7 @@ import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/googl
 import { DataAnalysisComponent } from './data-analysis/data-analysis.component';
 import { UploadFormComponent } from './data-analysis/upload-form/upload-form.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   declarations: [
@@ -73,9 +74,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule ,
+    MatFileUploadModule,
     GoogleChartsModule,
     GoogleChartsModule.forRoot()
   ],
