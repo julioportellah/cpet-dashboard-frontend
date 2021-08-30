@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PatientForm } from '../../models/patient-form.model';
 
 @Component({
   selector: 'app-upload-form',
@@ -8,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class UploadFormComponent implements OnInit {
   uploadDataForm: FormGroup;
+  @Output() submitted = new EventEmitter<PatientForm>();
   constructor(private formBuilder: FormBuilder) { }
   numberIntegerRegex = /^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/;
   heightRegext = /\d+(\.\d{1,3})?/;
@@ -49,12 +51,16 @@ export class UploadFormComponent implements OnInit {
     if (!this.uploadDataForm.valid) {
       return;
     }
-    console.log(this.uploadDataForm.get('age')?.value)
-    console.log(this.uploadDataForm.get('gender')?.value)
-    console.log(this.uploadDataForm.get('height')?.value)
-    console.log(this.uploadDataForm.get('weight')?.value)
-    console.log(this.fileBase64.toString().split(",",2)[1])
-
+    let result = new PatientForm();
+    result.Age = parseInt(this.uploadDataForm.get('age')?.value);
+    result.Sex = this.uploadDataForm.get('gender')?.value;
+    result.Height = parseInt(this.uploadDataForm.get('height')?.value);
+    result.Weight = parseInt(this.uploadDataForm.get('weight')?.value);
+    result.Upload = this.fileBase64.toString().split(",", 2)[1];
+    result.Action = true;
+    console.log('-----------------');
+    console.log(result);
+    this.submitted.emit(result);
   }
   numberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;

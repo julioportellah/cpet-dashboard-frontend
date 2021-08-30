@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Session } from '../models/session.model';
 import { SessionRaw } from '../models/session-raw.model';
 import { PatientFullPrediction } from '../models/patient-full-prediction.model';
+import { PatientForm } from '../models/patient-form.model';
 
 @Injectable({
   providedIn: 'root'
@@ -200,6 +201,21 @@ export class CpetService implements OnInit {
         reject(null);
       })
     });
+  }
+
+  analyzePatientData(patientForm: PatientForm): Promise<Session | null> {
+    return new Promise<Session | null>((resolve, reject) => {
+      this.httpClient.post<PatientForm>(this.baseUrl + `/api/analyze_patient_data/`, patientForm)
+        .subscribe((resp: any) => {
+          
+        }, error => {
+          let respError = error;
+          if (error.status === 500) {
+            respError = ["Error"];
+          }
+          reject(null);
+        });
+    })
   }
 
   getAllTimesSessionScoresById(session:string):Promise<Session | null>{

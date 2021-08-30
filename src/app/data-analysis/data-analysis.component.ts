@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientForm } from '../models/patient-form.model';
 
 @Component({
   selector: 'app-data-analysis',
@@ -12,4 +13,9 @@ export class DataAnalysisComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitData(patientForm: PatientForm) {
+    console.log("*****************");
+    console.log(patientForm);
+    console.log("*****************");
+  }
 }
