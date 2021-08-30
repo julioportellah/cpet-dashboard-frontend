@@ -60,16 +60,16 @@ export class DynamicPlotComponent implements OnInit {
     if (this.valuesIndex <= 5)
     {
       this.valuesIndex++;
-      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
-      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
-      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
+      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
       this.timeValue = this.timeData[this.valuesIndex];
       let timeScores = this.timeData.slice(0, this.valuesIndex + 1);
-      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
       this.cardiacScores=this.cardiacScoresFull.slice(0, this.valuesIndex+1);
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
       this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session";
+      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
+      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
+      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
       
     }
   }
@@ -78,15 +78,15 @@ export class DynamicPlotComponent implements OnInit {
     if (this.valuesIndex > 0)
     {
       this.valuesIndex--;
-      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
-      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
-      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
+      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
       this.timeValue = this.timeData[this.valuesIndex];
       this.cardiacScores=this.cardiacScoresFull.slice(0, this.valuesIndex+1);
       this.pulmonaryScores=this.pulmonaryScoresFull.slice(0, this.valuesIndex+1);
       this.otherScores=this.otherScoresFull.slice(0, this.valuesIndex+1);
-      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session"
-      this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
+      this.ProgressText = "Radar plot at "+this.timeValue.toString()+"% of the session";
+      this.radarCardiacValue = this.cardiacScoresFull[this.valuesIndex]
+      this.radarPulmonaryValue = this.pulmonaryScoresFull[this.valuesIndex]
+      this.radarOtherValue = this.otherScoresFull[this.valuesIndex]
     }
   }
 

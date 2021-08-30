@@ -66,7 +66,6 @@ export class DashboardComponent implements OnInit {
     this.sessionSelected = selected;
     this.showInterpretation = false;
     this.showLoader = true;
-    console.log(this.sessionSelected);
     this.cpetService.getSessionScoresByIdAsync(selected).then(answer => {
       this.cardiacValue = answer[0];
       this.pulmonaryValue = answer[1];
@@ -74,7 +73,6 @@ export class DashboardComponent implements OnInit {
     })
 
     this.cpetService.getCardiacSummaryPlotAsync(this.sessionSelected).then(answer => {
-      console.log(answer)
       this.image_base64_cardiac = answer[0];
       this.image_base64_force_cardiac = answer[1];
       this.image_base64_pulmonary = answer[2];
