@@ -1,18 +1,16 @@
 <form class="form-container">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Select</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-            <mat-label>Session</mat-label>
-            <mat-select placeholder='Select' [value]="selectedValue">
-                <!-- <mat-option *ngFor="let session of sessions" [value]="session.value" (click)="SelectSession(session.value)">
-                    {{session.viewValue}}
-                </mat-option> -->
-                <mat-option *ngFor="let session of sessions" [value]="session.viewValue" (click)="SelectSession(session.viewValue)">
-                    {{session.viewValue}}
-                </mat-option>
-            </mat-select>
-      </mat-card-content>
-    </mat-card>
-  </form>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Select</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-label>Session</mat-label>
+      <mat-select placeholder='Select' [value]="selectedValue">
+        <mat-option *ngFor="let session of sessions" [value]="session.viewValue"
+          (click)="SelectSession(session.viewValue)">
+          {{session.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-card-content>
+  </mat-card>
+</form>

@@ -16,7 +16,7 @@ export class AppComponent {
     { "name": "Dashboard", "link": "Dashboard" ,"active":true},
     //{ "name": "SHAP plots", "link": "ShapPlots", "active":false },
     { "name": "Dynamic plot", "link": "DynamicPlot", "active":false },
-    //{ "name": "Try it", "link": "TryIt", "active":false },
+    { "name": "Try it", "link": "DataAnalysis", "active":false },
     { "name": "About", "link": "About", "active":false }
   ];
   links = ['Dashboard','About', 'ShapPlots'];

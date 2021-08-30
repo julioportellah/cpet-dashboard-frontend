@@ -32,6 +32,9 @@ import { DynamicRadarPlotComponent } from './dynamic-plot/dynamic-radar-plot/dyn
 import { PerformancePlotComponent } from './dynamic-plot/performance-plot/performance-plot.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/google-chart-test.component';
+import { DataAnalysisComponent } from './data-analysis/data-analysis.component';
+import { UploadFormComponent } from './data-analysis/upload-form/upload-form.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -47,7 +50,9 @@ import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/googl
     ScoreTimelineComponent,
     DynamicRadarPlotComponent,
     PerformancePlotComponent,
-    GoogleChartTestComponent
+    GoogleChartTestComponent,
+    DataAnalysisComponent,
+    UploadFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,8 @@ import { GoogleChartTestComponent } from './dynamic-plot/google-chart-test/googl
     MatProgressBarModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule ,
     GoogleChartsModule,
     GoogleChartsModule.forRoot()
   ],

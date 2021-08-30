@@ -12,8 +12,8 @@ export class CpetService implements OnInit {
   dynamicData: any;
   performanceData: any;
   sessionNumber:number;
-  baseUrl:string=`https://cpet-backend.azurewebsites.net`;
-  //baseUrl:string=`http://127.0.0.1:5000`;
+  //baseUrl:string=`https://cpet-backend.azurewebsites.net`;
+  baseUrl:string=`http://127.0.0.1:5000`;
   // constructor(private http: HttpClient) { 
   //   this.data = this.http.get("./assets/data.json");
   // }

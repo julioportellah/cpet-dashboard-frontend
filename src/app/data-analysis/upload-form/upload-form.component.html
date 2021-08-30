@@ -1,0 +1,21 @@
+<p>Insert your dataset</p>
+<div class="form-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Patient's information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="uploadDataForm" (submit)="submit()">
+                <mat-form-field class="form-field" appearance="fill">
+                    <mat-label>Age</mat-label>
+                    <input matInput formControlName="age" (keypress)="numberOnly($event)" required>
+                    <mat-error>
+                        <span *ngIf="uploadDataForm.controls.age.errors?.required">This field is required.</span>
+                        <span *ngIf="uploadDataForm.controls.age.errors?.pattern">You can only put numbers.</span>
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit">Analyze</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

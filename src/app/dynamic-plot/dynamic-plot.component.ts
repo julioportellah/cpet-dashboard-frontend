@@ -110,7 +110,11 @@ export class DynamicPlotComponent implements OnInit {
   chartValue = [[40,0,0,0]]
   temporalChartValue = [[40,0,0,0]]
   onSelected(selected: string) {
-
+    this.chartValue = [[40,0,0,0]]
+    this.temporalChartValue = [[40,0,0,0]]
+    this.radarCardiacValue = 0;
+    this.radarPulmonaryValue = 0;
+    this.radarOtherValue = 0;
     this.cpetService.getAllTimesSessionScoresByIdAsync(selected).then(
       answer => {
         this.showDynamicPlots = answer != null;
@@ -140,6 +144,7 @@ export class DynamicPlotComponent implements OnInit {
             [this.timeData[5], this.cardiacScoresFull[5], this.pulmonaryScoresFull[5], this.otherScoresFull[5]],
             [this.timeData[6], this.cardiacScoresFull[6], this.pulmonaryScoresFull[6], this.otherScoresFull[6]],
           ]
+          this.temporalChartValue = this.chartValue.slice(0, this.valuesIndex + 1);
         }
       }
     );
