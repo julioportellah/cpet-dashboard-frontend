@@ -1,1 +1,76 @@
-<app-upload-form (submitted)="submitData($event)"></app-upload-form>
+<div class="row">
+    <app-upload-form (submitted)="submitData($event)"></app-upload-form>
+</div>
+<ng-container *ngIf="showDynamicPlots">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <ng-container *ngIf="showDynamicPlots">
+                <!-- <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
+                    [other-scores]='otherScores'></app-score-timeline> -->
+                    <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
+            </ng-container>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <ng-container *ngIf="showDynamicPlots">
+                <div class="row">
+                    <app-dynamic-radar-plot [cardiac-value]='radarCardiacValue' [pulmonary-value]='radarPulmonaryValue'
+                        [other-value]='radarOtherValue' [reference-cardiac-value]='radarReferencesCardiac'
+                        [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'></app-dynamic-radar-plot>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-sm-2">
+            <ng-container *ngIf="!isPlaying">
+                <button mat-icon-button color="primary" (click)="showPrevious()"
+                    aria-label="Example icon button with a home icon">
+                    <mat-icon>skip_previous</mat-icon>
+                </button>
+                <ng-container *ngIf="valuesIndex<6">
+                    <button mat-icon-button color="primary" (click)="playDynamicRadar()"
+                        aria-label="Example icon button with a home icon">
+                        <mat-icon>play_circle_filled</mat-icon>
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="valuesIndex==6">
+                    <button mat-icon-button color="primary" (click)="replayDynamicRadar()"
+                        aria-label="Example icon button with a home icon">
+                        <mat-icon>replay_circle_filled</mat-icon>
+                    </button>
+                </ng-container>
+                <button mat-icon-button color="primary" (click)="showNext()"
+                    aria-label="Example icon button with a home icon">
+                    <mat-icon>skip_next</mat-icon>
+                </button>
+            </ng-container>
+            <ng-container *ngIf="isPlaying">
+                <button mat-icon-button color="primary" disabled>
+                    <mat-icon>skip_previous</mat-icon>
+                </button>
+                <ng-container *ngIf="valuesIndex==6">
+                    <button mat-icon-button color="primary" (click)="replayDynamicRadar()"
+                        aria-label="Example icon button with a home icon">
+                        <mat-icon>replay_circle_filled</mat-icon>
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="valuesIndex<6">
+                    <button mat-icon-button color="primary" (click)="pauseDynamicRadar()"
+                        aria-label="Example icon button with a home icon">
+                        <mat-icon>pause_circle_filled</mat-icon>
+                    </button>
+                </ng-container>
+                <button mat-icon-button color="primary" 
+                    aria-label="Example icon button with a home icon" disabled>
+                    <mat-icon>skip_next</mat-icon>
+                </button>
+            </ng-container>
+        </div>
+        <div class="col-lg-10 col-sm-10">
+            <section class="example-section">
+                {{ProgressText}}
+                <mat-progress-bar mode="determinate" value="{{timeValue}}" color="accent"></mat-progress-bar>
+            </section>
+        </div>
+    </div>
+</ng-container>
