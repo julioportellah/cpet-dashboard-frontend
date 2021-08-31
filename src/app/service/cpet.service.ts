@@ -214,7 +214,13 @@ export class CpetService implements OnInit {
             Time: resp.time_list,
             CardiacScores: resp.cardiac_proba,
             PulmonaryScores: resp.pulmonary_proba,
-            OtherScores: resp.other_proba
+            OtherScores: resp.other_proba,
+            CariacForcePlotString: resp.cardiac_force,
+            PulmonaryForcePlotString: resp.pulmonary_force,
+            OtherForcePlotString: resp.other_force,
+            CariacSummaryString: resp.cardiac_summary,
+            PulmonarySummaryString: resp.pulmonary_summary,
+            OtherSummaryString: resp.other_summary
           };
           resolve(objectResult);
         }, error => {
