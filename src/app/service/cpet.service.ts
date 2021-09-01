@@ -205,11 +205,9 @@ export class CpetService implements OnInit {
   }
 
   analyzePatientData(patientForm: PatientForm): Promise<PatientFormResult | null> {
-    console.log(patientForm)
     return new Promise<PatientFormResult | null>((resolve, reject) => {
       this.httpClient.post<PatientFormResult>(this.baseUrl + `/api/analyze_patient_data/`, patientForm)
         .subscribe((resp: any) => {
-          console.log(resp);
           let objectResult: PatientFormResult = {
             Time: resp.time_list,
             CardiacScores: resp.cardiac_proba,

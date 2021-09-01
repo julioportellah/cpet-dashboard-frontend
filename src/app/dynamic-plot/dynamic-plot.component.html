@@ -4,9 +4,7 @@
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
         <ng-container *ngIf="showDynamicPlots">
-            <!-- <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
-                [other-scores]='otherScores'></app-score-timeline> -->
-                <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
+            <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
         </ng-container>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12">
@@ -14,7 +12,8 @@
             <div class="row">
                 <app-dynamic-radar-plot [cardiac-value]='radarCardiacValue' [pulmonary-value]='radarPulmonaryValue'
                     [other-value]='radarOtherValue' [reference-cardiac-value]='radarReferencesCardiac'
-                    [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'></app-dynamic-radar-plot>
+                    [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'>
+                </app-dynamic-radar-plot>
             </div>
         </ng-container>
     </div>

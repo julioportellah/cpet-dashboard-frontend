@@ -1,21 +1,32 @@
 <div class="row">
     <app-upload-form (submitted)="submitData($event)"></app-upload-form>
 </div>
-<ng-container *ngIf="showDynamicPlots">
+<ng-container *ngIf="showDynamicPlots=='done'">
     <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-12">
-            <ng-container *ngIf="showDynamicPlots">
-                <!-- <app-score-timeline [cardiac-scores]='cardiacScores' [pulmonary-scores]='pulmonaryScores'
-                    [other-scores]='otherScores'></app-score-timeline> -->
-                    <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
-            </ng-container>
+            <app-google-chart-test [chart-values]='temporalChartValue'></app-google-chart-test>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12">
-            <ng-container *ngIf="showDynamicPlots">
+            <ng-container *ngIf="true">
                 <div class="row">
                     <app-dynamic-radar-plot [cardiac-value]='radarCardiacValue' [pulmonary-value]='radarPulmonaryValue'
                         [other-value]='radarOtherValue' [reference-cardiac-value]='radarReferencesCardiac'
-                        [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'></app-dynamic-radar-plot>
+                        [reference-pulmonary-value]='radarReferencesPulmonary' [reference-other-value]='radarReferencesOther'>
+                    </app-dynamic-radar-plot>
+                    <section>
+                        <ng-container *ngIf="true">
+                            <div class="button-row">
+                                <ng-container *ngIf="true">
+                                    <button mat-raised-button (click)="openDialogOther()" color="primary">See
+                                        Other</button>&nbsp;&nbsp;&nbsp;
+                                    <button mat-raised-button (click)="openDialogCardiac()" color="primary">See
+                                        Cardiac</button>&nbsp;&nbsp;&nbsp;
+                                    <button mat-raised-button (click)="openDialogPulmonary()" color="primary">See
+                                        Pulmonary</button>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </section>
                 </div>
             </ng-container>
         </div>
@@ -73,4 +84,7 @@
             </section>
         </div>
     </div>
+</ng-container>
+<ng-container *ngIf="showDynamicPlots=='notYet'">
+    <mat-spinner></mat-spinner>
 </ng-container>

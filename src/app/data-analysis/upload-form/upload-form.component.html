@@ -50,8 +50,9 @@
                         </mat-form-field>
                     </div>
                     <div flex>
-                        <label for="singleFile"></label>
                         <input id="singleFile" type="file" formControlName="cpetFile" (change)="uploadFileEvt($event)" accept=".csv" />
+                        <br/>
+                        <label for="singleFile">**Do not include recovery data</label>
                     </div>
                     <div flex>
                         <!-- <button mat-raised-button color="primary" type="submit">Analyze</button>
