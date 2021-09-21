@@ -135,8 +135,6 @@ export class DataAnalysisComponent implements OnInit {
 
     this.cpetService.analyzePatientData(patientForm).then(
       answer => {
-        console.log("---------------");
-        console.log(answer);
         this.showDynamicPlots = "done";
         if (this.showDynamicPlots)
         {
@@ -171,8 +169,6 @@ export class DataAnalysisComponent implements OnInit {
           this.image_base64_force_pulmonary = answer?.PulmonaryForcePlotString!;
           this.image_base64_other = answer?.OtherSummaryString!;
           this.image_base64_force_other = answer?.OtherForcePlotString!;
-          console.log("---------------");
-          console.log(this.cardiacScoresFull);
         }
       }
     );

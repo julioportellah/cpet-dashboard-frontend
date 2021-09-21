@@ -29,25 +29,25 @@ export class UploadFormComponent implements OnInit {
 
   uploadFileEvt(imgFile: any){
     if (imgFile.target.files && imgFile.target.files[0]) {
-      console.log(imgFile)
       let file = imgFile.target.files[0];
-      console.log(file);
 
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-          console.log(reader.result);
           this.fileBase64 = reader.result;
       };
 
     }
   }
 
+  downloadFile() {
+    let link = document.createElement("a");
+    link.download = "template.csv";
+    link.href = "assets/data/TemplateCPET.csv";
+    link.click();
+  }
+
   submit() {
-    console.log('Form submitted');
-    console.log(this.uploadDataForm.valid);
-    console.log(this.uploadDataForm.value);
-    console.log(this.fileBase64);
     if (!this.uploadDataForm.valid) {
       return;
     }
@@ -58,8 +58,6 @@ export class UploadFormComponent implements OnInit {
     result.Weight = parseInt(this.uploadDataForm.get('weight')?.value);
     result.Upload = this.fileBase64.toString().split(",", 2)[1];
     result.Action = true;
-    console.log('-----------------');
-    console.log(result);
     this.submitted.emit(result);
   }
   numberOnly(event: any): boolean {

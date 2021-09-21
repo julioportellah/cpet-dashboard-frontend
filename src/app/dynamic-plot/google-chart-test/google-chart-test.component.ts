@@ -18,7 +18,10 @@ export class GoogleChartTestComponent implements OnInit, OnChanges {
       duration: 1000,
       easing: 'in'
     },
-    colors: ["#77B6EA", "#545454","#D13A1A"],
+    colors: ["#D13A1A","#77B6EA", "#545454"],
+    series:{0: { lineDashStyle: [0,0] },
+    1: { lineDashStyle: [8, 8] },
+    2: { lineDashStyle: [2, 2, 20, 2, 20, 2] },},
     is3D: true
   };//["#77B6EA", "#545454",'#D13A1A'],
   chartType:any = 'LineChart';

@@ -55,16 +55,22 @@
                         <label for="singleFile">**Do not include recovery data</label>
                     </div>
                     <div flex>
-                        <!-- <button mat-raised-button color="primary" type="submit">Analyze</button>
-                        <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
-                            <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-                        </mat-file-upload-queue> -->
-                    </div>
-                    <div flex>
                         <button mat-raised-button color="primary" type="submit">Analyze</button>
                     </div>
                 </div>
             </form>
+            <br>
+            <div flex>
+                <button class="mdc-button mdc-button--raised mdc-button--leading" (click)="downloadFile()">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">download</i>
+                    <span class="mdc-button__label">Download Template</span>
+                </button>
+                <!-- <button mat-raised-button color="primary" type="submit">Analyze</button>
+                <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'">
+                    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                </mat-file-upload-queue> -->
+            </div>
         </mat-card-content>
     </mat-card>
 </div>
